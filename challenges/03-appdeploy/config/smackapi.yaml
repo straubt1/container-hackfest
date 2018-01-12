@@ -9,9 +9,11 @@ spec:
       labels:
         app: smackapi
     spec:
+      imagePullSecrets:
+      - name: dockerregistrysecret
       containers:
       - name: smackapi
-        image: chzbrgr71/smackapi
+        image: <USERNAME>k8shackfest.azurecr.io/smackapi
         env:
         - name: KUBE_NODE_NAME
           valueFrom:

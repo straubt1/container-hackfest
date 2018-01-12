@@ -9,9 +9,11 @@ spec:
       labels:
         app: smackweb
     spec:
+      imagePullSecrets:
+      - name: dockerregistrysecret
       containers:
       - name: smackweb
-        image: chzbrgr71/smackweb
+        image: <USERNAME>k8shackfest.azurecr.io/smackweb
         env:
         - name: API_SERVICE
           value: "smackapi.default.svc.cluster.local"
