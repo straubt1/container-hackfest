@@ -99,6 +99,8 @@ For this lab, we will use the sample applications in the Microsmack repo. https:
     * Use a different tag for new version
     * Update variables or code to change application
 
+7. Clean up
+
 
 ## Advanced areas to explore
 

@@ -55,8 +55,12 @@ In this lab you will deploy some basic kubernetes resources for a sample applica
     
     Verify the the endpoint publicly: http://<Public IP>:8080/    
 
-7. Clean up Pods
-    `kubectl delete pods --all`
+7. Clean Up
+    ```
+    kubectl delete pods,deployments,services,namespaces --all
+    ```
+    **Note:** some namespaces can not be deleted, and the kubernetes service should restart automatically.
+
 
 8. Create an __App__ manifest file (`myhealthyapp.yaml') that combines the __Deploy__ and __Service__ manifests and adds Health Checks
 
@@ -79,6 +83,7 @@ In this lab you will deploy some basic kubernetes resources for a sample applica
 
     Open the K8S cluster and monitor failures as you experiment with sending failures
 
+10. Clean Up again
 
 
 ## Advanced areas to explore
