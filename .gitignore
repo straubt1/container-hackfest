@@ -2,3 +2,6 @@
 secrets.md
 bin/
 .ssh/
+*.tfstate
+*.tfstate.backup
+.terraform/
