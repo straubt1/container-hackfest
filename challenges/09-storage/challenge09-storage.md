@@ -45,41 +45,64 @@ In this lab you will use Kubernetes Persistent Storage constructs to mount a per
     kubectl create -f config\mssql-store.yaml
     ```     
 
-4. Use ``sqlcmd`` to create a new database and a new table and insert some data into the table.
+4. Use `sqlcmd` to create a new database and a new table and insert some data into the table.
 
      `exec` into the container by locating the pod name that mssql-deploy created
-
     ```sh
     $ kubectl exec mssql-store-***-*** -it bash
     root@mssql-store-***-***:/#
     ```
 
-Not the public IP
-/opt/mssql-tools/bin/sqlcmd -S 10.0.66.232,1433 -U SA -P 'My_Complex_Pass1'
-    * Go to the bash shell of your mssql pod
-    * Connect to your service instance on port 1433
-        * `/opt/mssql-tools/bin/sqlcmd -S <IP_OF_SERVICE>,1433 -U SA -P '<YourPassword>'`
-    * At the sqlcmd prompt create a new database
-        * `CREATE DATABASE TestDB`
-    * Verify the table was created
-        * `SELECT Name from sys.Databases`
-    * Execute the above commands
-        * `GO`
-    * Set the DB context and create a new table called Inventory
-        * `USE TestDB`
-        * `CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)`
-        * `GO`
-    * Insert data into the new table 
-        * `INSERT INTO Inventory VALUES (1, 'penguins', 150); INSERT INTO Inventory VALUES (2, 'whales', 154);`
-        * `GO`
-    * Query the table to verify the data was written
-        * `SELECT * FROM Inventory WHERE quantity > 152;`
-        * `GO`
-    * Exit the `sqlcmd` tool
-        * `QUIT`
-    * Exit your shell session by typing `exit`
+    Connect to your service instance on port 1433
+    ```
+    /opt/mssql-tools/bin/sqlcmd -S <INTERNAL_IP_OF_SERVICE>,1433 -U SA -P '<YourPassword>'
+    ```
 
-5. Determine the node the msqql pod is running on and drain the node. You may have to use ``--ignore-daemonsets`` parameter to properly drain the node.
+    At the sqlcmd prompt create a new database
+    ```
+    CREATE DATABASE TestDB
+    GO
+    ```
+    
+    Verify the table was created 
+    ```
+    SELECT Name from sys.Databases
+    GO
+    ```
+
+    Set the DB context and create a new table called Inventory
+    ```
+    USE TestDB
+    CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+    GO
+    ```
+
+    Insert data into the new table 
+    ```
+    INSERT INTO Inventory VALUES (1, 'penguins', 150); INSERT INTO Inventory VALUES (2, 'whales', 154);
+    GO
+    ```
+
+    Query the table to verify the data was written
+    ```
+    SELECT * FROM Inventory WHERE quantity > 152;
+    GO
+    ```
+
+    Exit the `sqlcmd` tool
+    ```
+    QUIT
+    ```
+
+    Exit your container session
+    ```
+    exit
+    ```
+
+5. Determine the node the msqql pod is running on and drain the node. 
+
+    You may have to use `--ignore-daemonsets` parameter to properly drain the node.
+    You may have to use `--delete-local-data` if jenkins is still running from the previous step.
 
     ```
     kubectl get node
