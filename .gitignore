@@ -1,1 +1,7 @@
 **/.DS_Store
+secrets.md
+bin/
+.ssh/
+*.tfstate
+*.tfstate.backup
+.terraform/

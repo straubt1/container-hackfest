@@ -1,0 +1,36 @@
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: service1-deploy
+spec:
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: service1-app
+    spec:
+      containers:
+      - name: kuar-cnt
+        image: evillgenius/kuar:1
+        ports:
+        - containerPort: 8080
+---        
+kind: Service
+apiVersion: v1
+metadata:
+  name: service1
+spec:
+  selector:
+    app: service1-app
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: LoadBalancer
+

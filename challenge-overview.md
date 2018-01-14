@@ -24,29 +24,29 @@ For our Hackfest events, attendees will be provided a VM student environment hos
 
 ## Challenges:
  
-### Challenge #1: Installing Azure Container Service / ACS Engine
+### Challenge #1: [Installing Azure Kubernetes Service / AKS](challenges/01-aksintro/README.md)
  
-### Challenge #2: Kubernetes Basics (Pods, Deployments, Services, Namespaces, Health Checks)
+### Challenge #2: [Kubernetes Basics](challenges/02-k8sbasics/README.md)
  
-### Challenge #3: Deploy app end-to-end (Docker->ACR->ACS)
+### Challenge #3: [Deploy app end-to-end](challenges/03-appdeploy/README.md)
 
-### Challenge #4: Service Discovery and Networking
+### Challenge #4: [Service Discovery and Networking](challenges/04-servicediscovery/README.md)
  
-### Challenge #5: Ingress Controllers
+### Challenge #5: [Ingress Controllers](challenges/05-ingress/README.md)
 
-### Challenge #6: Secrets and ConfigMaps
+### Challenge #6: [Secrets and ConfigMaps](challenges/06-configuration/README.md)
  
-### Challenge #7: Helm Deployment
+### Challenge #7: [Helm Deployment](challenges/07-helm/README.md)
  
-### Challenge #8: CI/CD
+### Challenge #8: [CI/CD](challenges/08-cicd/README.md)
 
-### Challenge #9: Persistent Storage
+### Challenge #9: [Persistent Storage](challenges/09-storage/README.md)
  
-### Challenge #10: Scaling
+### Challenge #10: [Scaling](challenges/10-scaling/README.md)
  
-### Challenge #11: Monitoring & Logging
+### Challenge #11: [Monitoring & Logging](challenges/11-logging/README.md)
  
-### Challenge #12: Troubleshooting & Debugging
+### Challenge #12: [Troubleshooting & Debugging](challenges/12-debugging/README.md)
  
-### Challenge #13: Kubernetes Advanced (DaemonSets, StatefulSets, Jobs, InitContainers)
+### Challenge #13: [Kubernetes Advanced](challenges/13-advanced/README.md)
  

@@ -22,3 +22,7 @@ Follow one or more of the below guides.
 
 * Splunk
 
+## Notes
+
+- This does not seem to be supported yet in AKS.
+
