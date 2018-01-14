@@ -1,4 +1,4 @@
-# Intro to Azure Container Service
+# Intro to Azure Kubernetes Service
 
 ## Expected outcome
 
@@ -35,7 +35,7 @@ hackfestK8sCluster  centralus   Kubernetes-Hackfest  1.7.7                Succee
 ```
 
 ### Connect to cluster
-List your ACS clusters: `az aks list -o table`
+List your AKS clusters: `az aks list -o table`
 
 Authenticate and browse:
 ```
