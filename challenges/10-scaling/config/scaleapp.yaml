@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-ns
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-svc
+  namespace: my-ns
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+---
+kind: Deployment
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+metadata:
+  name: my-deploy
+  namespace: my-ns
+  labels:
+    zone: prod
+    version: v1
+spec:
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-ctr
+        image: evillgenius/kuar:1
+        ports:
+        - containerPort: 8080
